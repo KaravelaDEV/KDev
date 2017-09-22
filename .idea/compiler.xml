@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="KDev" />
         <module name="kdev" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="kdev" target="1.8" />
+      <module name="KDev" target="1.8" />
       <module name="KDevApp" target="1.8" />
     </bytecodeTargetLevel>
   </component>

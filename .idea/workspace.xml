@@ -7,16 +7,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ba6e26a-7e74-4dd4-b416-499ee6c9337e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/TaskDAO.class" afterPath="$PROJECT_DIR$/target/classes/TaskDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/TaskDAOTest.class" afterPath="$PROJECT_DIR$/target/test-classes/TaskDAOTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Main.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Task.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/TaskDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-TaskDAOTest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-TaskTest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/surefire-reports/TaskDAOTest.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/surefire-reports/TaskTest.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/TaskDAOTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/TaskTest.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/TaskDAO.java" afterPath="$PROJECT_DIR$/src/main/java/TaskDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TaskDAOTest.java" afterPath="$PROJECT_DIR$/src/test/java/TaskDAOTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-TaskDAOTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-TaskDAOTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TaskDAOTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/TaskDAOTest.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,14 +39,14 @@
     <favorites_list name="kdev" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.53759396">
+    <splitter split-orientation="horizontal" split-proportion="0.5150376">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="TaskDAO.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/TaskDAO.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="162">
-                  <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+                <state relative-caret-position="648">
+                  <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="method#createDatabase#0;class#TaskDAO#0" expanded="false" />
@@ -58,14 +66,15 @@
           <file leaf-file-name="TaskDAOTest.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/java/TaskDAOTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="378">
-                  <caret line="53" column="46" lean-forward="false" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
+                <state relative-caret-position="513">
+                  <caret line="70" column="45" lean-forward="false" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="45" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="method#createTask#0;class#TaskDAOTest#0" expanded="false" />
                     <element signature="method#fetchTaskByID#0;class#TaskDAOTest#0" expanded="false" />
                     <element signature="method#updateTask#0;class#TaskDAOTest#0" expanded="false" />
                     <element signature="method#removeTask#0;class#TaskDAOTest#0" expanded="false" />
+                    <element signature="method#listTasks#0;class#TaskDAOTest#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -106,7 +115,17 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <expand />
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="KDev" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="KDev" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
       <select />
     </treeState>
   </component>
@@ -225,7 +244,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TaskDAOTest">
+  <component name="RunManager" selected="JUnit.TaskDAOTest.listTasks">
     <configuration name="KDevJAR" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="JAR_PATH" value="$PROJECT_DIR$/target/KDev-1.0.jar" />
@@ -278,14 +297,14 @@
         <option name="MakeProject" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaskDAOTest.createTask" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TaskDAOTest.fetchTaskByID" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="KDev" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TaskDAOTest" />
-      <option name="METHOD_NAME" value="createTask" />
+      <option name="METHOD_NAME" value="fetchTaskByID" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -298,14 +317,14 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="TaskDAOTest.fetchTaskByID" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TaskDAOTest.listTasks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="KDev" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TaskDAOTest" />
-      <option name="METHOD_NAME" value="fetchTaskByID" />
+      <option name="METHOD_NAME" value="listTasks" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -455,18 +474,18 @@
       <item index="0" class="java.lang.String" itemvalue="Application.KDevProject" />
       <item index="1" class="java.lang.String" itemvalue="JAR Application.KDevJAR" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.TaskDAOTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.createTask" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.fetchTaskByID" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.removeTask" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.updateTask" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.fetchTaskByID" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.removeTask" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.updateTask" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.listTasks" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TaskDAOTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.removeTask" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.updateTask" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.fetchTaskByID" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.createTask" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.listTasks" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TaskDAOTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.removeTask" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.updateTask" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.fetchTaskByID" />
       </list>
     </recent_temporary>
   </component>
@@ -487,20 +506,20 @@
     <history-entry file="TaskDAOTest - 2017.09.22 at 14h 40m 58s.xml">
       <configuration name="TaskDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaskDAOTest_fetchTaskByID - 2017.09.22 at 14h 23m 54s.xml">
-      <configuration name="TaskDAOTest.fetchTaskByID" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TaskDAOTest_fetchTaskByID - 2017.09.22 at 14h 24m 21s.xml">
-      <configuration name="TaskDAOTest.fetchTaskByID" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TaskDAOTest_fetchTaskByID - 2017.09.22 at 14h 25m 47s.xml">
-      <configuration name="TaskDAOTest.fetchTaskByID" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TaskDAOTest_fetchTaskByID - 2017.09.22 at 14h 26m 01s.xml">
       <configuration name="TaskDAOTest.fetchTaskByID" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TaskDAOTest_fetchTaskByID - 2017.09.22 at 14h 26m 41s.xml">
       <configuration name="TaskDAOTest.fetchTaskByID" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TaskDAOTest_listTasks - 2017.09.22 at 14h 54m 15s.xml">
+      <configuration name="TaskDAOTest.listTasks" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TaskDAOTest_listTasks - 2017.09.22 at 14h 54m 32s.xml">
+      <configuration name="TaskDAOTest.listTasks" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TaskDAOTest_listTasks - 2017.09.22 at 15h 00m 28s.xml">
+      <configuration name="TaskDAOTest.listTasks" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TaskDAOTest_removeTask - 2017.09.22 at 14h 36m 58s.xml">
       <configuration name="TaskDAOTest.removeTask" configurationId="JUnit" />
@@ -526,7 +545,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -535,7 +553,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24060151" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24060151" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2590909" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -692,22 +710,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TaskDAOTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="53" column="46" lean-forward="false" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
+        <state relative-caret-position="513">
+          <caret line="70" column="45" lean-forward="false" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#createTask#0;class#TaskDAOTest#0" expanded="false" />
             <element signature="method#fetchTaskByID#0;class#TaskDAOTest#0" expanded="false" />
             <element signature="method#updateTask#0;class#TaskDAOTest#0" expanded="false" />
             <element signature="method#removeTask#0;class#TaskDAOTest#0" expanded="false" />
+            <element signature="method#listTasks#0;class#TaskDAOTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/TaskDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="648">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#createDatabase#0;class#TaskDAO#0" expanded="false" />

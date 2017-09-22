@@ -5,19 +5,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TaskDAO {
     private Connection conn;
-    private String url = "jdbc:sqlite::memory:";
 
-    public void createDatabase(){
-        String TABLE_TASK_DEFINITION = "CREATE TABLE TASK(ID integer PRIMARY KEY,  NAME text NOT NULL)";
-
+    public void createDatabase()throws SQLException{
         try {
+            String url = "jdbc:sqlite::memory:";
+            String TABLE_TASK_DEFINITION = "CREATE TABLE TASK(ID integer PRIMARY KEY,  NAME text NOT NULL)";
             conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             stmt.execute(TABLE_TASK_DEFINITION);
+
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new SQLException(e.getMessage());
         }
     }
 
@@ -88,5 +91,27 @@ public class TaskDAO {
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
+    }
+
+    public List<Task> list() throws SQLException {
+        List<Task> list = new ArrayList<>();
+
+        try {
+            String sqlQuery = "SELECT ID, NAME FROM TASK";
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs  = stmt.executeQuery(sqlQuery);
+
+            while (rs.next()) {
+                Task task = new Task(rs.getString("NAME"));
+                task.setID(rs.getInt("ID"));
+                list.add(task);
+            }
+
+        } catch (SQLException e) {
+            throw new SQLException(e.getMessage());
+        }
+
+        return list;
     }
 }

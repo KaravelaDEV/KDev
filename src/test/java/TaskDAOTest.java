@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import java.util.List;
 
 public class TaskDAOTest {
     @Test
@@ -64,5 +65,23 @@ public class TaskDAOTest {
         taskDAO.remove(task);
         task = taskDAO.fetchByID(1);
         assertNull(task);
+    }
+
+    @Test
+    public void listTasks() throws Exception {
+        TaskDAO taskDAO= new TaskDAO();
+        taskDAO.createDatabase();
+
+        Task task = new Task("Create Course A");
+        taskDAO.save(task);
+
+        task = new Task("Create Course B");
+        taskDAO.save(task);
+
+        task = new Task("Create Course C");
+        taskDAO.save(task);
+
+        List<Task> list = taskDAO.list();
+        assertEquals(3, list.size());
     }
 }

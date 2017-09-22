@@ -2,10 +2,6 @@ public class Task {
     private String name;
     private int ID;
 
-    public Task(String name){
-        this.name = name;
-    }
-
     public void setName(String name){
         this.name = name;
     }

@@ -9,7 +9,8 @@ public class TaskTest {
 
     @Test
     public void getName() throws Exception {
-        Task task = new Task("GCP Course");
+        Task task = new Task();
+        task.setName("GCP Course");
         assertEquals("GCP Course", task.getName());
     }
 

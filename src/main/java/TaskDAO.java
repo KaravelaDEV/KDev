@@ -13,6 +13,13 @@ public class TaskDAO {
 
     public void createDatabase()throws SQLException{
         try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+
             String url = "jdbc:sqlite::memory:";
             String TABLE_TASK_DEFINITION = "CREATE TABLE TASK(ID integer PRIMARY KEY,  NAME text NOT NULL)";
             conn = DriverManager.getConnection(url);
@@ -58,7 +65,8 @@ public class TaskDAO {
             ResultSet rs  = pstmt.executeQuery();
 
             while (rs.next()) {
-                task = new Task(rs.getString("NAME"));
+                task = new Task();
+                task.setName(rs.getString("NAME"));
                 task.setID(rs.getInt("ID"));
             }
 
@@ -103,7 +111,8 @@ public class TaskDAO {
             ResultSet rs  = stmt.executeQuery(sqlQuery);
 
             while (rs.next()) {
-                Task task = new Task(rs.getString("NAME"));
+                Task task = new Task();
+                task.setName(rs.getString("NAME"));
                 task.setID(rs.getInt("ID"));
                 list.add(task);
             }

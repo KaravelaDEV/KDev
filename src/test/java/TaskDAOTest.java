@@ -9,7 +9,8 @@ public class TaskDAOTest {
         TaskDAO taskDAO= new TaskDAO();
         taskDAO.createDatabase();
 
-        Task task = new Task("Create Course");
+        Task task = new Task();
+        task.setName("Create Course");
         taskDAO.save(task);
 
         assertEquals(1, task.getID());
@@ -21,7 +22,8 @@ public class TaskDAOTest {
         TaskDAO taskDAO = new TaskDAO();
         taskDAO.createDatabase();
 
-        Task task = new Task("Create Course");
+        Task task = new Task();
+        task.setName("Create Course");
         taskDAO.save(task);
 
         task = taskDAO.fetchByID(1);
@@ -36,7 +38,8 @@ public class TaskDAOTest {
         TaskDAO taskDAO = new TaskDAO();
         taskDAO.createDatabase();
 
-        Task task = new Task("Create Course");
+        Task task = new Task();
+        task.setName("Create Course");
         taskDAO.save(task);
 
         task = taskDAO.fetchByID(1);
@@ -56,7 +59,8 @@ public class TaskDAOTest {
         TaskDAO taskDAO = new TaskDAO();
         taskDAO.createDatabase();
 
-        Task task = new Task("Create Course");
+        Task task = new Task();
+        task.setName("Create Course");
         taskDAO.save(task);
 
         task = taskDAO.fetchByID(1);
@@ -72,13 +76,16 @@ public class TaskDAOTest {
         TaskDAO taskDAO= new TaskDAO();
         taskDAO.createDatabase();
 
-        Task task = new Task("Create Course A");
+        Task task = new Task();
+        task.setName("Create Course A");
         taskDAO.save(task);
 
-        task = new Task("Create Course B");
+        task = new Task();
+        task.setName("Create Course B");
         taskDAO.save(task);
 
-        task = new Task("Create Course C");
+        task = new Task();
+        task.setName("Create Course C");
         taskDAO.save(task);
 
         List<Task> list = taskDAO.list();

@@ -8,14 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8ba6e26a-7e74-4dd4-b416-499ee6c9337e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KDev.iml" afterPath="$PROJECT_DIR$/KDev.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/App.java" afterPath="$PROJECT_DIR$/src/main/java/App.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="$PROJECT_DIR$/src/main/java/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Task.java" afterPath="$PROJECT_DIR$/src/main/java/Task.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/TaskDAO.java" afterPath="$PROJECT_DIR$/src/main/java/TaskDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TaskDAOTest.java" afterPath="$PROJECT_DIR$/src/test/java/TaskDAOTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TaskTest.java" afterPath="$PROJECT_DIR$/src/test/java/TaskTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,7 +26,27 @@
     <favorites_list name="kdev" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#configDataBase#0;class#App#0" expanded="false" />
+                <element signature="method#configRouters#0;class#App#0" expanded="false" />
+                <element signature="method#handlePostTask#0;class#App#0" expanded="false" />
+                <element signature="method#handleGetTasks#0;class#App#0" expanded="false" />
+                <element signature="method#handleGetTask#0;class#App#0" expanded="false" />
+                <element signature="method#handlePutTask#0;class#App#0" expanded="false" />
+                <element signature="method#handleDeleteTask#0;class#App#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -38,6 +54,7 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -52,13 +69,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/App.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Task.java" />
-        <option value="$PROJECT_DIR$/src/main/java/TaskDAO.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TaskDAOTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/TaskTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/StatusResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/StandardResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/App.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TaskDAOTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/TaskDAO.java" />
       </list>
     </option>
   </component>
@@ -68,6 +87,11 @@
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="KDev" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="KDev" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
       </expand>
       <select />
@@ -141,6 +165,19 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kdev" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kdev" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -175,7 +212,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TaskDAOTest">
+  <component name="RunManager" selected="JUnit.TaskDAOTest.updateTask">
     <configuration name="KDevJAR" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="JAR_PATH" value="$PROJECT_DIR$/target/KDev-1.0.jar" />
@@ -412,10 +449,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TaskDAOTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.listTasks" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.removeTask" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.updateTask" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.updateTask" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TaskDAOTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.listTasks" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.removeTask" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.TaskDAOTest.fetchTaskByID" />
       </list>
     </recent_temporary>
@@ -434,9 +471,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TaskDAOTest - 2017.09.22 at 14h 40m 58s.xml">
-      <configuration name="TaskDAOTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TaskDAOTest - 2017.09.22 at 15h 02m 43s.xml">
       <configuration name="TaskDAOTest" configurationId="JUnit" />
     </history-entry>
@@ -449,20 +483,23 @@
     <history-entry file="TaskDAOTest - 2017.09.22 at 19h 10m 50s.xml">
       <configuration name="TaskDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaskDAOTest_listTasks - 2017.09.22 at 14h 54m 15s.xml">
-      <configuration name="TaskDAOTest.listTasks" configurationId="JUnit" />
+    <history-entry file="TaskDAOTest - 2017.09.22 at 22h 21m 56s.xml">
+      <configuration name="TaskDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaskDAOTest_listTasks - 2017.09.22 at 14h 54m 32s.xml">
-      <configuration name="TaskDAOTest.listTasks" configurationId="JUnit" />
+    <history-entry file="TaskDAOTest_updateTask - 2017.09.23 at 00h 00m 14s.xml">
+      <configuration name="TaskDAOTest.updateTask" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaskDAOTest_listTasks - 2017.09.22 at 15h 00m 28s.xml">
-      <configuration name="TaskDAOTest.listTasks" configurationId="JUnit" />
+    <history-entry file="TaskDAOTest_updateTask - 2017.09.23 at 00h 01m 01s.xml">
+      <configuration name="TaskDAOTest.updateTask" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaskDAOTest_removeTask - 2017.09.22 at 14h 36m 58s.xml">
-      <configuration name="TaskDAOTest.removeTask" configurationId="JUnit" />
+    <history-entry file="TaskDAOTest_updateTask - 2017.09.23 at 00h 01m 50s.xml">
+      <configuration name="TaskDAOTest.updateTask" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaskDAOTest_removeTask - 2017.09.22 at 14h 40m 18s.xml">
-      <configuration name="TaskDAOTest.removeTask" configurationId="JUnit" />
+    <history-entry file="TaskDAOTest_updateTask - 2017.09.23 at 00h 02m 23s.xml">
+      <configuration name="TaskDAOTest.updateTask" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TaskDAOTest_updateTask - 2017.09.23 at 00h 03m 18s.xml">
+      <configuration name="TaskDAOTest.updateTask" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -476,6 +513,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -485,7 +523,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24060151" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35454544" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35454544" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -510,7 +548,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -524,7 +562,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#196#197#0" expanded="true" />
+            <element signature="e#196#197#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -597,14 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -615,18 +645,6 @@
             <element signature="n#build#0;n#project#0;n#!!top" expanded="false" />
             <element signature="n#configuration#0;n#execution#0;n#executions#0;n#plugin#0;n#plugins#0;n#build#0;n#project#0;n#!!top" expanded="false" />
             <element signature="n#configuration#0;n#plugin#1;n#plugins#0;n#build#0;n#project#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="method#start#0;class#App#0" expanded="false" />
-            <element signature="method#handlePostTask#0;class#App#0" expanded="false" />
-            <element signature="method#handleGetTasks#0;class#App#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -644,32 +662,81 @@
         <state relative-caret-position="108">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
-            <element signature="e#164#165#0" expanded="true" />
-            <element signature="e#196#197#0" expanded="true" />
+            <element signature="e#164#165#0" expanded="false" />
+            <element signature="e#196#197#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TaskDAOTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="87" column="38" lean-forward="false" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
+        <state relative-caret-position="81">
+          <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/StatusResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/StandardResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#StandardResponse#1;class#StandardResponse#0" expanded="false" />
+            <element signature="method#StandardResponse#2;class#StandardResponse#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/TaskDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="114" column="51" lean-forward="true" selection-start-line="114" selection-start-column="51" selection-end-line="114" selection-end-column="51" />
+        <state relative-caret-position="297">
+          <caret line="79" column="54" lean-forward="false" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#createDatabase#0;class#TaskDAO#0" expanded="false" />
             <element signature="method#save#0;class#TaskDAO#0" expanded="false" />
+            <element signature="method#fetchByID#0;class#TaskDAO#0" expanded="false" />
             <element signature="method#update#0;class#TaskDAO#0" expanded="false" />
             <element signature="method#remove#0;class#TaskDAO#0" expanded="false" />
+            <element signature="method#list#0;class#TaskDAO#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TaskDAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="36" column="46" lean-forward="false" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+          <folding>
+            <element signature="method#createTask#0;class#TaskDAOTest#0" expanded="false" />
+            <element signature="method#fetchTaskByID#0;class#TaskDAOTest#0" expanded="false" />
+            <element signature="method#updateTask#0;class#TaskDAOTest#0" expanded="false" />
+            <element signature="method#removeTask#0;class#TaskDAOTest#0" expanded="false" />
+            <element signature="method#listTasks#0;class#TaskDAOTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#configDataBase#0;class#App#0" expanded="false" />
+            <element signature="method#configRouters#0;class#App#0" expanded="false" />
+            <element signature="method#handlePostTask#0;class#App#0" expanded="false" />
+            <element signature="method#handleGetTasks#0;class#App#0" expanded="false" />
+            <element signature="method#handleGetTask#0;class#App#0" expanded="false" />
+            <element signature="method#handlePutTask#0;class#App#0" expanded="false" />
+            <element signature="method#handleDeleteTask#0;class#App#0" expanded="false" />
           </folding>
         </state>
       </provider>

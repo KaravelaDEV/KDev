@@ -79,9 +79,10 @@ public class TaskDAO {
 
     public void update(Task task) throws SQLException {
         try {
-            String sqlUpdate = "UPDATE TASK SET name = ?";
+            String sqlUpdate = "UPDATE TASK SET NAME = ? WHERE ID = ?";
             PreparedStatement pstmt = conn.prepareStatement(sqlUpdate);
             pstmt.setString(1, task.getName());
+            pstmt.setInt(2, task.getID());
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

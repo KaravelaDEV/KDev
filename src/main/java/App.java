@@ -1,5 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import spark.Request;
 import spark.Response;
@@ -8,17 +9,16 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import static spark.Spark.get;
-import static spark.Spark.port;
-import static spark.Spark.post;
-
 import java.io.StringWriter;
+
+import static spark.Spark.*;
 
 class App {
     private static final int HTTP_BAD_REQUEST = 400;
+    private static final int HTTP_OK_REQUEST = 200;
     private TaskDAO taskDAO = null;
 
-    void start() {
+    void configDataBase(){
         try {
             this.taskDAO = new TaskDAO();
             this.taskDAO.createDatabase();
@@ -26,46 +26,174 @@ class App {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
 
+    void configRouters(){
         port(3000);
 
         get("/tasks", this::handleGetTasks);
 
+        get("/tasks/:id", this::handleGetTask);
+
         post("/tasks", this::handlePostTask);
+
+        put("/tasks/:id", this::handlePutTask);
+
+        delete("/tasks/:id", this::handleDeleteTask);
     }
 
-    private int handlePostTask(Request request, Response response){
+    private Object handlePostTask(Request request, Response response){
+        ObjectMapper mapper = new ObjectMapper();
+        StandardResponse sr;
+
         try {
-            ObjectMapper mapper = new ObjectMapper();
             Task task = mapper.readValue(request.body(), Task.class);
 
             taskDAO.save(task);
 
-            response.status(200);
-            response.type("application/json");
-            return task.getID();
+            response.status(HTTP_OK_REQUEST);
+            sr = new StandardResponse(StatusResponse.SUCCESS, task);
 
-        } catch (IOException | SQLException ios) {
+        } catch (IOException | SQLException e) {
             response.status(HTTP_BAD_REQUEST);
-            return 0;
+            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage());
         }
+
+        String sras;
+
+        try{
+            response.type("application/json");
+            sras = mapper.writeValueAsString(sr);
+
+        } catch (JsonProcessingException jpe) {
+            sras = jpe.getMessage();
+            System.out.print(sras);
+        }
+
+        return sras;
     }
 
-    private String handleGetTasks(Request request, Response response){
+    private Object handleGetTasks(Request request, Response response){
+        StandardResponse sr;
+
         try {
             List<Task> list = taskDAO.list();
-            StringWriter sw = new StringWriter();
+
+            response.status(HTTP_OK_REQUEST);
+            sr = new StandardResponse(StatusResponse.SUCCESS, list);
+
+        } catch (SQLException e){
+            response.status(HTTP_BAD_REQUEST);
+            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage());
+        }
+
+        String sras;
+
+        try{
+            response.type("application/json");
 
             ObjectMapper mapper = new ObjectMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            mapper.writeValue(sw, list);
+            sras = mapper.writeValueAsString(sr);
 
-            response.status(200);
-            response.type("application/json");
-            return sw.toString();
-
-        } catch (IOException | SQLException e){
-            throw new RuntimeException("IOException from a StringWriter?");
+        } catch (JsonProcessingException jpe) {
+            sras = jpe.getMessage();
+            System.out.print(sras);
         }
+
+        return sras;
+    }
+
+    private Object handleGetTask(Request request, Response response){
+        StandardResponse sr;
+
+        try {
+            int ID = Integer.parseInt(request.params(":id"));
+            Task task = this.taskDAO.fetchByID(ID);
+
+            response.status(HTTP_OK_REQUEST);
+            sr = new StandardResponse(StatusResponse.SUCCESS, task);
+
+        } catch (SQLException e){
+            response.status(HTTP_BAD_REQUEST);
+            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage());
+        }
+
+        String sras;
+
+        try{
+            response.type("application/json");
+
+            ObjectMapper mapper = new ObjectMapper();
+            sras = mapper.writeValueAsString(sr);
+
+        } catch (JsonProcessingException jpe) {
+            sras = jpe.getMessage();
+            System.out.print(sras);
+        }
+
+        return sras;
+    }
+
+    private Object handlePutTask(Request request, Response response){
+        ObjectMapper mapper = new ObjectMapper();
+        StandardResponse sr;
+
+        try {
+            Task task = mapper.readValue(request.body(), Task.class);
+
+            taskDAO.update(task);
+
+            response.status(HTTP_OK_REQUEST);
+            sr = new StandardResponse(StatusResponse.SUCCESS, task);
+
+        } catch (IOException | SQLException e) {
+            response.status(HTTP_BAD_REQUEST);
+            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage());
+        }
+
+        String sras;
+
+        try{
+            response.type("application/json");
+            sras = mapper.writeValueAsString(sr);
+
+        } catch (JsonProcessingException jpe) {
+            sras = jpe.getMessage();
+            System.out.print(sras);
+        }
+
+        return sras;
+    }
+
+    private Object handleDeleteTask(Request request, Response response){
+        ObjectMapper mapper = new ObjectMapper();
+        StandardResponse sr;
+
+        try {
+            Task task = mapper.readValue(request.body(), Task.class);
+
+            this.taskDAO.remove(task);
+
+            response.status(HTTP_OK_REQUEST);
+            sr = new StandardResponse(StatusResponse.SUCCESS, "Task Successfully deleted.");
+
+        } catch (IOException | SQLException e) {
+            response.status(HTTP_BAD_REQUEST);
+            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage());
+        }
+
+        String sras;
+
+        try{
+            response.type("application/json");
+            sras = mapper.writeValueAsString(sr);
+
+        } catch (JsonProcessingException jpe) {
+            sras = jpe.getMessage();
+            System.out.print(sras);
+        }
+
+        return sras;
     }
 }

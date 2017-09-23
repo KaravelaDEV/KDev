@@ -39,19 +39,32 @@ public class TaskDAOTest {
         taskDAO.createDatabase();
 
         Task task = new Task();
-        task.setName("Create Course");
+        task.setName("Create Course A");
+        taskDAO.save(task);
+
+        task = new Task();
+        task.setName("Create Course B");
         taskDAO.save(task);
 
         task = taskDAO.fetchByID(1);
         assertEquals(1, task.getID());
-        assertEquals("Create Course", task.getName());
+        assertEquals("Create Course A", task.getName());
 
-        task.setName("Course Updated");
+        task = taskDAO.fetchByID(2);
+        assertEquals(2, task.getID());
+        assertEquals("Create Course B", task.getName());
+
+        task = taskDAO.fetchByID(1);
+        task.setName("Course A Updated");
         taskDAO.update(task);
 
         task = taskDAO.fetchByID(1);
         assertEquals(1, task.getID());
-        assertEquals("Course Updated", task.getName());
+        assertEquals("Course A Updated", task.getName());
+
+        task = taskDAO.fetchByID(2);
+        assertEquals(2, task.getID());
+        assertEquals("Create Course B", task.getName());
     }
 
     @Test

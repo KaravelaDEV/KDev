@@ -1,199 +1,79 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import br.com.kdev.task.TaskController;
+import br.com.kdev.task.TaskConverter;
+import br.com.kdev.task.TaskDAO;
 
-import spark.Request;
-import spark.Response;
-
-import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
-
-import java.io.StringWriter;
 
 import static spark.Spark.*;
 
 class App {
-    private static final int HTTP_BAD_REQUEST = 400;
-    private static final int HTTP_OK_REQUEST = 200;
-    private TaskDAO taskDAO = null;
+    private static void enableCORS(final String origin, final String methods, final String headers) {
 
-    void configDataBase(){
+        options("/*", (request, response) -> {
+
+            String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
+            if (accessControlRequestHeaders != null) {
+                response.header("Access-Control-Allow-Headers", accessControlRequestHeaders);
+            }
+
+            String accessControlRequestMethod = request.headers("Access-Control-Request-Method");
+            if (accessControlRequestMethod != null) {
+                response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
+            }
+
+            return "OK";
+        });
+
+        before((request, response) -> {
+            response.header("Access-Control-Allow-Origin", origin);
+            response.header("Access-Control-Request-Method", methods);
+            response.header("Access-Control-Allow-Headers", headers);
+            // Note: this may or may not be necessary in your particular application
+            response.type("application/json");
+        });
+    }
+
+    private TaskDAO configDataBase(){
+        TaskDAO taskDAO = null;
         try {
-            this.taskDAO = new TaskDAO();
-            this.taskDAO.createDatabase();
+            taskDAO = new TaskDAO();
+            taskDAO.createDatabase();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        return taskDAO;
     }
 
-    void configRouters(){
+    private void configRouters(TaskController taskController){
         port(3000);
 
-        get("/tasks", this::handleGetTasks);
+        get("/tasks", taskController::fetchAllTasks);
 
-        get("/tasks/:id", this::handleGetTask);
+        get("/tasks/:id", taskController::fetchTaskByID);
 
-        post("/tasks", this::handlePostTask);
+        post("/tasks", taskController::createTask);
 
-        put("/tasks/:id", this::handlePutTask);
+        put("/tasks/:id", taskController::updateTask);
 
-        delete("/tasks/:id", this::handleDeleteTask);
+        delete("/tasks/:id", taskController::deleteTask);
     }
 
-    private Object handlePostTask(Request request, Response response){
-        ObjectMapper mapper = new ObjectMapper();
-        StandardResponse sr;
+    void start(){
+        TaskConverter taskConverter = new TaskConverter();
+        TaskDAO taskDAO = configDataBase();
+        TaskController taskController = new TaskController(taskConverter, taskDAO);
+        configRouters(taskController);
 
-        try {
-            Task task = mapper.readValue(request.body(), Task.class);
-
-            taskDAO.save(task);
-
-            response.status(HTTP_OK_REQUEST);
-            sr = new StandardResponse(StatusResponse.SUCCESS, task);
-
-        } catch (IOException | SQLException e) {
-            response.status(HTTP_BAD_REQUEST);
-            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage());
-        }
-
-        String sras;
-
-        try{
-            response.type("application/json");
-            sras = mapper.writeValueAsString(sr);
-
-        } catch (JsonProcessingException jpe) {
-            sras = jpe.getMessage();
-            System.out.print(sras);
-        }
-
-        return sras;
+        String origin = "*";
+        String methods = "HEAD, GET, POST, DELETE, PUT";
+        String headers = "origin, content-type, accept";
+        enableCORS(origin, methods, headers);
     }
 
-    private Object handleGetTasks(Request request, Response response){
-        StandardResponse sr;
-
-        try {
-            List<Task> list = taskDAO.list();
-
-            response.status(HTTP_OK_REQUEST);
-            sr = new StandardResponse(StatusResponse.SUCCESS, list);
-
-        } catch (SQLException e){
-            response.status(HTTP_BAD_REQUEST);
-            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage());
-        }
-
-        String sras;
-
-        try{
-            response.type("application/json");
-
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            sras = mapper.writeValueAsString(sr);
-
-        } catch (JsonProcessingException jpe) {
-            sras = jpe.getMessage();
-            System.out.print(sras);
-        }
-
-        return sras;
-    }
-
-    private Object handleGetTask(Request request, Response response){
-        StandardResponse sr;
-
-        try {
-            int ID = Integer.parseInt(request.params(":id"));
-            Task task = this.taskDAO.fetchByID(ID);
-
-            response.status(HTTP_OK_REQUEST);
-            sr = new StandardResponse(StatusResponse.SUCCESS, task);
-
-        } catch (SQLException e){
-            response.status(HTTP_BAD_REQUEST);
-            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage());
-        }
-
-        String sras;
-
-        try{
-            response.type("application/json");
-
-            ObjectMapper mapper = new ObjectMapper();
-            sras = mapper.writeValueAsString(sr);
-
-        } catch (JsonProcessingException jpe) {
-            sras = jpe.getMessage();
-            System.out.print(sras);
-        }
-
-        return sras;
-    }
-
-    private Object handlePutTask(Request request, Response response){
-        ObjectMapper mapper = new ObjectMapper();
-        StandardResponse sr;
-
-        try {
-            Task task = mapper.readValue(request.body(), Task.class);
-
-            taskDAO.update(task);
-
-            response.status(HTTP_OK_REQUEST);
-            sr = new StandardResponse(StatusResponse.SUCCESS, task);
-
-        } catch (IOException | SQLException e) {
-            response.status(HTTP_BAD_REQUEST);
-            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage());
-        }
-
-        String sras;
-
-        try{
-            response.type("application/json");
-            sras = mapper.writeValueAsString(sr);
-
-        } catch (JsonProcessingException jpe) {
-            sras = jpe.getMessage();
-            System.out.print(sras);
-        }
-
-        return sras;
-    }
-
-    private Object handleDeleteTask(Request request, Response response){
-        ObjectMapper mapper = new ObjectMapper();
-        StandardResponse sr;
-
-        try {
-            Task task = mapper.readValue(request.body(), Task.class);
-
-            this.taskDAO.remove(task);
-
-            response.status(HTTP_OK_REQUEST);
-            sr = new StandardResponse(StatusResponse.SUCCESS, "Task Successfully deleted.");
-
-        } catch (IOException | SQLException e) {
-            response.status(HTTP_BAD_REQUEST);
-            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage());
-        }
-
-        String sras;
-
-        try{
-            response.type("application/json");
-            sras = mapper.writeValueAsString(sr);
-
-        } catch (JsonProcessingException jpe) {
-            sras = jpe.getMessage();
-            System.out.print(sras);
-        }
-
-        return sras;
+    public static void main(String[] args) {
+        App app = new App();
+        app.start();
     }
 }

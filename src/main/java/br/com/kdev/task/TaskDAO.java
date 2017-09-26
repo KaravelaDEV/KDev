@@ -1,3 +1,5 @@
+package br.com.kdev.task;
+
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
@@ -36,7 +38,7 @@ public class TaskDAO {
             String sqlInsert = "INSERT INTO TASK(name) VALUES(?)";
             PreparedStatement pstmt =
                     conn.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
-            pstmt.setString(1, task.getName());
+            pstmt.setString(1, task.getTitle());
 
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows == 0) {
@@ -47,7 +49,7 @@ public class TaskDAO {
             if (!generatedKeys.next()) {
                 throw new SQLException("Creating task failed, no ID obtained.");
             }
-            task.setID(generatedKeys.getInt(1));
+            task.setId(generatedKeys.getInt(1));
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -66,8 +68,8 @@ public class TaskDAO {
 
             while (rs.next()) {
                 task = new Task();
-                task.setName(rs.getString("NAME"));
-                task.setID(rs.getInt("ID"));
+                task.setTitle(rs.getString("NAME"));
+                task.setId(rs.getInt("ID"));
             }
 
         } catch (SQLException e) {
@@ -81,8 +83,8 @@ public class TaskDAO {
         try {
             String sqlUpdate = "UPDATE TASK SET NAME = ? WHERE ID = ?";
             PreparedStatement pstmt = conn.prepareStatement(sqlUpdate);
-            pstmt.setString(1, task.getName());
-            pstmt.setInt(2, task.getID());
+            pstmt.setString(1, task.getTitle());
+            pstmt.setInt(2, task.getId());
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -94,7 +96,7 @@ public class TaskDAO {
         try {
             String sqlDelete = "DELETE FROM TASK WHERE ID = ?";
             PreparedStatement pstmt = conn.prepareStatement(sqlDelete);
-            pstmt.setInt(1, task.getID());
+            pstmt.setInt(1, task.getId());
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -113,8 +115,8 @@ public class TaskDAO {
 
             while (rs.next()) {
                 Task task = new Task();
-                task.setName(rs.getString("NAME"));
-                task.setID(rs.getInt("ID"));
+                task.setTitle(rs.getString("NAME"));
+                task.setId(rs.getInt("ID"));
                 list.add(task);
             }
 

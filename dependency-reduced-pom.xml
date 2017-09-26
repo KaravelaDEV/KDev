@@ -18,7 +18,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>Main</mainClass>
+                  <mainClass>App</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -47,12 +47,6 @@
           <groupId>org.hamcrest</groupId>
         </exclusion>
       </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.xerial</groupId>
-      <artifactId>sqlite-jdbc</artifactId>
-      <version>3.8.10.1</version>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 </project>

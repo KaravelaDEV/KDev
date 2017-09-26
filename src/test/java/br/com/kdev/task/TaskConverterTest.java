@@ -17,5 +17,15 @@ public class TaskConverterTest {
         assertEquals(task.getDescription(), "New Google cloud course for programmers.");
         assertEquals(task.isCompleted(), false);
         assertNotNull(task.getDate());
+
+        data = "{\"title\":\"Create Google Cloud course\",\"description\":\"New Google cloud course for programmers.\",\"date\":null,\"completed\":false,\"id\":1}";
+
+        task = taskConverter.getTaskObject(data);
+
+        assertNotNull(task);
+        assertEquals(task.getTitle(), "Create Google Cloud course");
+        assertEquals(task.getDescription(), "New Google cloud course for programmers.");
+        assertEquals(task.isCompleted(), false);
+        assertNull(task.getDate());
     }
 }

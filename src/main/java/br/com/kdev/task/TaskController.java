@@ -7,6 +7,7 @@ import spark.Request;
 import spark.Response;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 
 public class TaskController {
@@ -53,7 +54,7 @@ public class TaskController {
             sr = new StandardResponse(StatusResponse.SUCCESS, "Successfully Listed", data);
             response.status(HTTP_OK_REQUEST);
 
-        } catch (SQLException e){
+        } catch (ParseException | SQLException e){
             sr = new StandardResponse(StatusResponse.ERROR, e.getMessage(), "[]");
             response.status(HTTP_BAD_REQUEST);
         }
@@ -74,7 +75,7 @@ public class TaskController {
             sr = new StandardResponse(StatusResponse.SUCCESS, "Successfully Fetched", data);
             response.status(HTTP_OK_REQUEST);
 
-        } catch (SQLException e){
+        } catch (ParseException | SQLException e){
             sr = new StandardResponse(StatusResponse.ERROR, e.getMessage(), "{}");
             response.status(HTTP_BAD_REQUEST);
         }

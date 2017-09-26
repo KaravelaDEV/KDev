@@ -3,6 +3,8 @@ package br.com.kdev.task;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+
+import java.util.Date;
 import java.util.List;
 
 public class TaskDAOTest {
@@ -13,6 +15,9 @@ public class TaskDAOTest {
 
         Task task = new Task();
         task.setTitle("Create Course");
+        task.setDescription("GCP");
+        task.setCompleted(false);
+        task.setDate(new Date());
         taskDAO.save(task);
 
         assertEquals(1, task.getId());
@@ -33,6 +38,19 @@ public class TaskDAOTest {
         assertNotNull(task);
         assertEquals(1, task.getId());
         assertEquals("Create Course", task.getTitle());
+        assertNull(task.getDate());
+
+        task = new Task();
+        task.setTitle("Create Course");
+        task.setDate(new Date());
+        taskDAO.save(task);
+
+        task = taskDAO.fetchByID(2);
+
+        assertNotNull(task);
+        assertEquals(2, task.getId());
+        assertEquals("Create Course", task.getTitle());
+        assertNotNull(task.getDate());
     }
 
     @Test
@@ -42,19 +60,23 @@ public class TaskDAOTest {
 
         Task task = new Task();
         task.setTitle("Create Course A");
+        task.setDate(new Date());
         taskDAO.save(task);
 
         task = new Task();
         task.setTitle("Create Course B");
+        task.setDate(new Date());
         taskDAO.save(task);
 
         task = taskDAO.fetchByID(1);
         assertEquals(1, task.getId());
         assertEquals("Create Course A", task.getTitle());
+        assertNotNull(task.getDate());
 
         task = taskDAO.fetchByID(2);
         assertEquals(2, task.getId());
         assertEquals("Create Course B", task.getTitle());
+        assertNotNull(task.getDate());
 
         task = taskDAO.fetchByID(1);
         task.setTitle("Course A Updated");
@@ -93,6 +115,7 @@ public class TaskDAOTest {
 
         Task task = new Task();
         task.setTitle("Create Course A");
+        task.setDate(new Date());
         taskDAO.save(task);
 
         task = new Task();

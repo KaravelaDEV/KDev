@@ -14,40 +14,16 @@ public class TaskConverter {
         this.mapper = new ObjectMapper();
     }
 
-    Task getTaskObject(String taskJSON){
-        Task task = null;
-
-        try {
-            task = mapper.readValue(taskJSON, Task.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return task;
+    Task getTaskObject(String taskJSON) throws IOException {
+        return mapper.readValue(taskJSON, Task.class);
     }
 
-    String getTaskJSON(Task task){
-        String data = "";
-
-        try {
-            data = mapper.writeValueAsString(task);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        return data;
+    String getTaskJSON(Task task) throws JsonProcessingException {
+        return mapper.writeValueAsString(task);
     }
 
-    String getTaskListJSON(List<Task> list){
-        String data = "";
-
-        try {
-            mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            data = mapper.writeValueAsString(list);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        return data;
+    String getTaskListJSON(List<Task> list) throws JsonProcessingException {
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        return mapper.writeValueAsString(list);
     }
 }

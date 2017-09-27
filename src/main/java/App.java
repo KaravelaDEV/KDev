@@ -55,9 +55,9 @@ class App {
 
         post("/tasks", taskController::createTask);
 
-        put("/tasks/:id", taskController::updateTask);
+        put("/tasks", taskController::updateTask);
 
-        delete("/tasks/:id", taskController::deleteTask);
+        delete("/tasks", taskController::deleteTask);
     }
 
     void start(){

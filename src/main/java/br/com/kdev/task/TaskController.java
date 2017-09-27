@@ -3,10 +3,12 @@ package br.com.kdev.task;
 import br.com.kdev.util.StandardResponse;
 import br.com.kdev.util.StatusResponse;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import spark.Request;
 import spark.Response;
 
 import java.sql.SQLException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class TaskController {
             sr = new StandardResponse(StatusResponse.SUCCESS, "Successfully Created", data);
             response.status(HTTP_OK_REQUEST);
 
-        } catch (SQLException e) {
+        } catch (IOException | SQLException e) {
             sr = new StandardResponse(StatusResponse.ERROR, e.getMessage(), "{}");
             response.status(HTTP_BAD_REQUEST);
         }
@@ -54,7 +56,7 @@ public class TaskController {
             sr = new StandardResponse(StatusResponse.SUCCESS, "Successfully Listed", data);
             response.status(HTTP_OK_REQUEST);
 
-        } catch (ParseException | SQLException e){
+        } catch (JsonProcessingException | ParseException | SQLException e){
             sr = new StandardResponse(StatusResponse.ERROR, e.getMessage(), "[]");
             response.status(HTTP_BAD_REQUEST);
         }
@@ -75,7 +77,7 @@ public class TaskController {
             sr = new StandardResponse(StatusResponse.SUCCESS, "Successfully Fetched", data);
             response.status(HTTP_OK_REQUEST);
 
-        } catch (ParseException | SQLException e){
+        } catch(JsonProcessingException | ParseException | SQLException e){
             sr = new StandardResponse(StatusResponse.ERROR, e.getMessage(), "{}");
             response.status(HTTP_BAD_REQUEST);
         }
@@ -97,7 +99,7 @@ public class TaskController {
             sr = new StandardResponse(StatusResponse.SUCCESS, "Successfully Updated", data);
             response.status(HTTP_OK_REQUEST);
 
-        } catch (SQLException e) {
+        } catch (IOException| SQLException e) {
             sr = new StandardResponse(StatusResponse.ERROR, e.getMessage(), "[]");
             response.status(HTTP_BAD_REQUEST);
         }
@@ -118,7 +120,7 @@ public class TaskController {
             sr = new StandardResponse(StatusResponse.SUCCESS, "Successfully Deleted", "{}");
             response.status(HTTP_OK_REQUEST);
 
-        } catch (SQLException e){
+        } catch(IOException | SQLException e){
             sr = new StandardResponse(StatusResponse.ERROR, e.getMessage(), "{}");
             response.status(HTTP_BAD_REQUEST);
         }

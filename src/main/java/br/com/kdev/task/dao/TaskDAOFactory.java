@@ -1,4 +1,4 @@
-package br.com.kdev.task;
+package br.com.kdev.task.dao;
 
 import br.com.kdev.util.DAOUtil;
 
@@ -32,14 +32,14 @@ public class TaskDAOFactory {
         return taskDAO;
     }
 
-    public SQLiteTaskDAO createSQLiteTaskDAO() throws SQLException, ClassNotFoundException, IOException {
-        SQLiteTaskDAO sqliteTaskDAO = new SQLiteTaskDAO(daoUtil.connectToSQLite());
-        sqliteTaskDAO.createDatabase();
+    public TaskDAO createSQLiteTaskDAO() throws SQLException, ClassNotFoundException, IOException {
+        TaskDAO taskDAO = new TaskDAO(daoUtil.connectToSQLite());
+        taskDAO.createDatabase();
 
-        return sqliteTaskDAO;
+        return taskDAO;
     }
 
-    public MySQLTaskDAO createMySQLTaskDAO() throws SQLException, ClassNotFoundException, IOException {
-        return new MySQLTaskDAO(daoUtil.connectToMysql());
+    public TaskDAO createMySQLTaskDAO() throws SQLException, ClassNotFoundException, IOException {
+        return new TaskDAO(daoUtil.connectToMysql());
     }
 }

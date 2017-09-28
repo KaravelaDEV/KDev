@@ -1,11 +1,11 @@
-package br.com.kdev.task;
+package br.com.kdev.task.helper;
 
+import br.com.kdev.task.model.Task;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -19,15 +19,15 @@ public class TaskConverter {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
-    Task getTaskObject(String taskJSON) throws IOException {
+    public Task getTaskObject(String taskJSON) throws IOException {
         return mapper.readValue(taskJSON, Task.class);
     }
 
-    String getTaskJSON(Task task) throws JsonProcessingException {
+    public String getTaskJSON(Task task) throws JsonProcessingException {
         return mapper.writeValueAsString(task);
     }
 
-    String getTaskListJSON(List<Task> list) throws JsonProcessingException {
+    public String getTaskListJSON(List<Task> list) throws JsonProcessingException {
         return mapper.writeValueAsString(list);
     }
 }

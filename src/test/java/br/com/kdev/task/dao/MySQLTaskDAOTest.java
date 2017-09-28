@@ -1,4 +1,4 @@
-package br.com.kdev.task;
+package br.com.kdev.task.dao;
 
 import br.com.kdev.util.DAOUtil;
 import org.junit.AfterClass;

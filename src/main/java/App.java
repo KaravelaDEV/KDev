@@ -1,12 +1,10 @@
-import br.com.kdev.task.ITaskDAO;
-import br.com.kdev.task.TaskController;
-import br.com.kdev.task.TaskConverter;
-
-import java.sql.SQLException;
+import br.com.kdev.task.dao.ITaskDAO;
+import br.com.kdev.task.controller.TaskController;
+import br.com.kdev.task.helper.TaskConverter;
 
 import static spark.Spark.*;
 
-import br.com.kdev.task.TaskDAOFactory;
+import br.com.kdev.task.dao.TaskDAOFactory;
 import org.apache.log4j.Logger;
 
 class App {

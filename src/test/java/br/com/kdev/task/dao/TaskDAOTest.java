@@ -1,5 +1,6 @@
-package br.com.kdev.task;
+package br.com.kdev.task.dao;
 
+import br.com.kdev.task.model.Task;
 import org.junit.Test;
 
 import java.util.Date;

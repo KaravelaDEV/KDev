@@ -1,8 +1,8 @@
-package br.com.kdev.task;
+package br.com.kdev.task.model;
 
 import java.util.Date;
 
-class Task {
+public class Task {
     private int id = 0;
     private String title;
     private String description;

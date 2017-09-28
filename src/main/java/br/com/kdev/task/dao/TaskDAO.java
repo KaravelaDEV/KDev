@@ -1,4 +1,6 @@
-package br.com.kdev.task;
+package br.com.kdev.task.dao;
+
+import br.com.kdev.task.model.Task;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -11,15 +13,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SQLiteTaskDAO implements ITaskDAO{
+public class TaskDAO implements ITaskDAO {
     private Connection conn;
     private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
-    SQLiteTaskDAO(Connection conn){
+    public TaskDAO(Connection conn){
         this.conn = conn;
     }
 
-    void createDatabase() throws SQLException {
+    public void createDatabase() throws SQLException {
         String TABLE_TASK_DEFINITION = "CREATE TABLE TASKS(ID integer PRIMARY KEY, TITLE text, DESCRIPTION text, STATUS integer, DATE text)";
 
         Statement stmt = conn.createStatement();

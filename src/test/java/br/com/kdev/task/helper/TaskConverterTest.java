@@ -1,5 +1,7 @@
-package br.com.kdev.task;
+package br.com.kdev.task.helper;
 
+import br.com.kdev.task.model.Task;
+import br.com.kdev.task.helper.TaskConverter;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

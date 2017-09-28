@@ -1,5 +1,8 @@
-package br.com.kdev.task;
+package br.com.kdev.task.controller;
 
+import br.com.kdev.task.dao.ITaskDAO;
+import br.com.kdev.task.model.Task;
+import br.com.kdev.task.helper.TaskConverter;
 import br.com.kdev.util.StandardResponse;
 import br.com.kdev.util.StatusResponse;
 

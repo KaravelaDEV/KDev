@@ -1,5 +1,6 @@
-package br.com.kdev.task;
+package br.com.kdev.task.model;
 
+import br.com.kdev.task.model.Task;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

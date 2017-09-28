@@ -1,4 +1,6 @@
-package br.com.kdev.task;
+package br.com.kdev.task.dao;
+
+import br.com.kdev.task.model.Task;
 
 import java.sql.SQLException;
 import java.text.ParseException;

@@ -1,4 +1,4 @@
-package br.com.kdev.task;
+package br.com.kdev.task.dao;
 
 import br.com.kdev.util.DAOUtil;
 import org.junit.After;
@@ -8,7 +8,7 @@ import org.junit.BeforeClass;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class SQLiteTaskDAOTest extends TaskDAOTest{
+public class SQLiteTaskDAOTest extends TaskDAOTest {
     private static DAOUtil daoUtil;
 
     @BeforeClass

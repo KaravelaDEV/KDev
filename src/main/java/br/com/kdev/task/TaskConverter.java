@@ -5,13 +5,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class TaskConverter {
     private ObjectMapper mapper;
 
     public TaskConverter(){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         this.mapper = new ObjectMapper();
+        mapper.setDateFormat(formatter);
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
     Task getTaskObject(String taskJSON) throws IOException {
@@ -23,7 +28,6 @@ public class TaskConverter {
     }
 
     String getTaskListJSON(List<Task> list) throws JsonProcessingException {
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
         return mapper.writeValueAsString(list);
     }
 }

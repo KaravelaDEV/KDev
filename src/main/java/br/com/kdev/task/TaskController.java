@@ -3,6 +3,7 @@ package br.com.kdev.task;
 import br.com.kdev.util.StandardResponse;
 import br.com.kdev.util.StatusResponse;
 
+import br.com.kdev.util.ValidateParams;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import spark.Request;
 import spark.Response;
@@ -39,25 +40,6 @@ public class TaskController {
 
         } catch (IOException | SQLException e) {
             sr = new StandardResponse(StatusResponse.ERROR, e.getMessage(), "{}");
-            response.status(HTTP_BAD_REQUEST);
-        }
-
-        response.type("application/json");
-        return sr.getResponse();
-    }
-
-    public Object fetchAllTasks(Request request, Response response){
-        StandardResponse sr;
-
-        try {
-            List<Task> list = taskDAO.list();
-            String data = taskConverter.getTaskListJSON(list);
-
-            sr = new StandardResponse(StatusResponse.SUCCESS, "Successfully Listed", data);
-            response.status(HTTP_OK_REQUEST);
-
-        } catch (JsonProcessingException | ParseException | SQLException e){
-            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage(), "[]");
             response.status(HTTP_BAD_REQUEST);
         }
 
@@ -126,6 +108,45 @@ public class TaskController {
         }
 
         response.type("application/json");
+        return sr.getResponse();
+    }
+
+    public Object filterTasks(Request request, Response response){
+        response.type("application/json");
+        StandardResponse sr;
+
+        String query = null;
+        int status = -1;
+
+        ValidateParams validate = new ValidateParams(request);
+        if(validate.hasParams()){
+
+            if (validate.hasParamQuery()) {
+                query = validate.getQuery();
+            }
+
+            if (validate.hasParamStatus()){
+                if(!validate.isStatusValid()) {
+                    sr = new StandardResponse(StatusResponse.ERROR, "Param status not valid", "{}");
+                    response.status(HTTP_BAD_REQUEST);
+                    return sr.getResponse();
+                }
+                status = validate.getParamStatus();
+            }
+        }
+
+        try {
+            List<Task> list = this.taskDAO.filter(query, status);
+            String data = taskConverter.getTaskListJSON(list);
+
+            sr = new StandardResponse(StatusResponse.SUCCESS, "Successfully Filtered", data);
+            response.status(HTTP_OK_REQUEST);
+
+        } catch(JsonProcessingException | ParseException | SQLException e){
+            sr = new StandardResponse(StatusResponse.ERROR, e.getMessage(), "{}");
+            response.status(HTTP_BAD_REQUEST);
+        }
+
         return sr.getResponse();
     }
 }

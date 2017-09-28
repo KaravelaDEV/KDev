@@ -16,7 +16,7 @@ public class TaskDAOTest {
         Task task = new Task();
         task.setTitle("Create Course");
         task.setDescription("GCP");
-        task.setCompleted(false);
+        task.setStatus(0);
         task.setDate(new Date());
         taskDAO.save(task);
 
@@ -126,7 +126,56 @@ public class TaskDAOTest {
         task.setTitle("Create Course C");
         taskDAO.save(task);
 
-        List<Task> list = taskDAO.list();
+        List<Task> list = taskDAO.filter("", -1);
         assertEquals(3, list.size());
+    }
+
+    @Test
+    public void filter() throws Exception {
+        TaskDAO taskDAO = new TaskDAO();
+        taskDAO.createDatabase();
+
+        Task task = new Task();
+        task.setTitle("Create Course AAA");
+        task.setDescription("Course of some letters A");
+        task.setStatus(0);
+        taskDAO.save(task);
+
+        task = new Task();
+        task.setTitle("Create Course A");
+        task.setDescription("Course of some letters AAA");
+        task.setStatus(1);
+        taskDAO.save(task);
+
+        task = new Task();
+        task.setTitle("Create Course BBB");
+        task.setDescription("Course of some letters B");
+        task.setStatus(0);
+        taskDAO.save(task);
+
+        task = new Task();
+        task.setTitle("Create Course B");
+        task.setDescription("Course of some letters BBB");
+        task.setStatus(1);
+        taskDAO.save(task);
+
+        List<Task> filteredTasks = taskDAO.filter("", 0);
+
+        assertNotNull(filteredTasks);
+        assertEquals(2, filteredTasks.size());
+        assertEquals(0, filteredTasks.get(0).getStatus());
+        assertEquals(0, filteredTasks.get(1).getStatus());
+
+        filteredTasks = taskDAO.filter("AAA", -1);
+
+        assertNotNull(filteredTasks);
+        assertEquals(2, filteredTasks.size());
+
+        filteredTasks = taskDAO.filter("BBB", 1);
+
+        assertNotNull(filteredTasks);
+        assertEquals(1, filteredTasks.size());
+        assertEquals("Create Course B", filteredTasks.get(0).getTitle());
+        assertEquals(1, filteredTasks.get(0).getStatus());
     }
 }

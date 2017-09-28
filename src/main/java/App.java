@@ -6,7 +6,12 @@ import java.sql.SQLException;
 
 import static spark.Spark.*;
 
+import org.apache.log4j.Logger;
+
 class App {
+
+    static Logger log = Logger.getLogger(App.class.getName());
+
     private static void enableCORS(final String origin, final String methods, final String headers) {
 
         options("/*", (request, response) -> {
@@ -49,7 +54,7 @@ class App {
     private void configRouters(TaskController taskController){
         port(3000);
 
-        get("/tasks", taskController::fetchAllTasks);
+        get("/tasks", taskController::filterTasks);
 
         get("/tasks/:id", taskController::fetchTaskByID);
 
@@ -58,6 +63,12 @@ class App {
         put("/tasks", taskController::updateTask);
 
         delete("/tasks", taskController::deleteTask);
+
+        exception(Exception.class, (exception, request, response) -> {
+            log.debug(exception.printStackTrace());
+            log.debug("Hello this is a debug message");
+            log.info("Hello this is an info message");
+        });
     }
 
     void start(){

@@ -6,7 +6,7 @@ class Task {
     private int id;
     private String title;
     private String description;
-    private boolean completed;
+    private int status;
     private Date date;
 
     public void setTitle(String title){
@@ -33,12 +33,12 @@ class Task {
         this.description = description;
     }
 
-    public boolean isCompleted() {
-        return completed;
+    public int getStatus() {
+        return status;
     }
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Date getDate() {

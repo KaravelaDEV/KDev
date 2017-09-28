@@ -6,16 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ba6e26a-7e74-4dd4-b416-499ee6c9337e" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/br/com/kdev/task/TaskDAO.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/kdev/task/SQLiteTaskDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/br/com/kdev/task/TaskDAOTest.java" afterPath="$PROJECT_DIR$/src/test/java/br/com/kdev/task/SQLiteTaskDAOTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KDev.iml" afterPath="$PROJECT_DIR$/KDev.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/App.java" afterPath="$PROJECT_DIR$/src/main/java/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/kdev/task/TaskController.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/kdev/task/TaskController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/db.properties" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" />
-    </list>
+    <list default="true" id="8ba6e26a-7e74-4dd4-b416-499ee6c9337e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,14 +24,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MySQLTaskDAOTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/br/com/kdev/task/MySQLTaskDAOTest.java">
+      <file leaf-file-name="SQLiteTaskDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/kdev/task/SQLiteTaskDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            <state relative-caret-position="108">
+              <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
               <folding>
-                <element signature="method#setUp#0;class#MySQLTaskDAOTest#0" expanded="false" />
+                <element signature="method#save#0;class#SQLiteTaskDAO#0" expanded="false" />
+                <element signature="method#fetchByID#0;class#SQLiteTaskDAO#0" expanded="false" />
+                <element signature="method#update#0;class#SQLiteTaskDAO#0" expanded="false" />
+                <element signature="method#remove#0;class#SQLiteTaskDAO#0" expanded="false" />
+                <element signature="method#filter#0;class#SQLiteTaskDAO#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MySQLTaskDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/kdev/task/MySQLTaskDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="14" column="52" lean-forward="false" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#save#0;class#MySQLTaskDAO#0" expanded="false" />
+                <element signature="method#fetchByID#0;class#MySQLTaskDAO#0" expanded="false" />
+                <element signature="method#update#0;class#MySQLTaskDAO#0" expanded="false" />
+                <element signature="method#remove#0;class#MySQLTaskDAO#0" expanded="false" />
+                <element signature="method#filter#0;class#MySQLTaskDAO#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sql/db.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="86" lean-forward="false" selection-start-line="0" selection-start-column="86" selection-end-line="0" selection-end-column="86" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,6 +123,7 @@
         <option value="$PROJECT_DIR$/src/test/java/br/com/kdev/task/SQLiteTaskDAOTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/br/com/kdev/task/TaskDAOTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/br/com/kdev/task/MySQLTaskDAOTest.java" />
+        <option value="$PROJECT_DIR$/sql/db.sql" />
       </list>
     </option>
   </component>
@@ -167,69 +190,6 @@
             <path>
               <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
               <item name="kdev" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kdev" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kdev" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kdev" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kdev" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="kdev" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kdev" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="kdev" type="462c0819:PsiDirectoryNode" />
-              <item name="task" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kdev" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kdev" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kdev" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kdev" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kdev" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="task" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -892,37 +852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/kdev/task/MySQLTaskDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="52" lean-forward="false" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#214#215#0" expanded="true" />
-            <element signature="e#246#247#0" expanded="true" />
-            <element signature="method#save#0;class#MySQLTaskDAO#0" expanded="false" />
-            <element signature="method#fetchByID#0;class#MySQLTaskDAO#0" expanded="false" />
-            <element signature="method#update#0;class#MySQLTaskDAO#0" expanded="false" />
-            <element signature="method#remove#0;class#MySQLTaskDAO#0" expanded="false" />
-            <element signature="method#filter#0;class#MySQLTaskDAO#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/kdev/task/SQLiteTaskDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
-          <folding>
-            <element signature="method#save#0;class#SQLiteTaskDAO#0" expanded="false" />
-            <element signature="method#fetchByID#0;class#SQLiteTaskDAO#0" expanded="false" />
-            <element signature="method#update#0;class#SQLiteTaskDAO#0" expanded="false" />
-            <element signature="method#remove#0;class#SQLiteTaskDAO#0" expanded="false" />
-            <element signature="method#filter#0;class#SQLiteTaskDAO#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/kdev/task/TaskDAOFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -972,6 +901,43 @@
           <folding>
             <element signature="method#setUp#0;class#MySQLTaskDAOTest#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/kdev/task/SQLiteTaskDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+          <folding>
+            <element signature="method#save#0;class#SQLiteTaskDAO#0" expanded="false" />
+            <element signature="method#fetchByID#0;class#SQLiteTaskDAO#0" expanded="false" />
+            <element signature="method#update#0;class#SQLiteTaskDAO#0" expanded="false" />
+            <element signature="method#remove#0;class#SQLiteTaskDAO#0" expanded="false" />
+            <element signature="method#filter#0;class#SQLiteTaskDAO#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/kdev/task/MySQLTaskDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="14" column="52" lean-forward="false" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#save#0;class#MySQLTaskDAO#0" expanded="false" />
+            <element signature="method#fetchByID#0;class#MySQLTaskDAO#0" expanded="false" />
+            <element signature="method#update#0;class#MySQLTaskDAO#0" expanded="false" />
+            <element signature="method#remove#0;class#MySQLTaskDAO#0" expanded="false" />
+            <element signature="method#filter#0;class#MySQLTaskDAO#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="86" lean-forward="false" selection-start-line="0" selection-start-column="86" selection-end-line="0" selection-end-column="86" />
+          <folding />
         </state>
       </provider>
     </entry>

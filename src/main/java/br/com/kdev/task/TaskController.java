@@ -115,7 +115,7 @@ public class TaskController {
         response.type("application/json");
         StandardResponse sr;
 
-        String query = null;
+        String query = "";
         int status = -1;
 
         ValidateParams validate = new ValidateParams(request);

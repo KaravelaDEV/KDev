@@ -65,9 +65,7 @@ class App {
         delete("/tasks", taskController::deleteTask);
 
         exception(Exception.class, (exception, request, response) -> {
-            log.debug(exception.printStackTrace());
-            log.debug("Hello this is a debug message");
-            log.info("Hello this is an info message");
+            log.debug(exception.toString());
         });
     }
 

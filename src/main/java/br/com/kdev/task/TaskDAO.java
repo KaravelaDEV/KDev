@@ -1,5 +1,7 @@
 package br.com.kdev.task;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
@@ -11,21 +13,29 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class TaskDAO {
     private Connection conn;
     private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
     public void createDatabase()throws SQLException{
+        String url = "";
         try {
-            Class.forName("org.sqlite.JDBC");
-        } catch (ClassNotFoundException e) {
+            Properties props = new Properties();
+            InputStream input = TaskDAO.class.getClassLoader().getResourceAsStream("db.properties");
+
+            props.load(input);
+
+            String driver = props.getProperty("driver");
+            url = props.getProperty("url");
+
+            Class.forName(driver);
+        } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
 
         try {
-
-            String url = "jdbc:sqlite::memory:";
             String TABLE_TASK_DEFINITION = "CREATE TABLE TASK(ID integer PRIMARY KEY, TITLE text, DESCRIPTION text, STATUS integer, DATE text)";
             conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();

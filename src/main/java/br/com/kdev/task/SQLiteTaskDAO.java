@@ -1,11 +1,8 @@
 package br.com.kdev.task;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
@@ -13,42 +10,26 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
-public class TaskDAO {
+public class SQLiteTaskDAO implements ITaskDAO{
     private Connection conn;
     private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
-    public void createDatabase()throws SQLException{
-        String url = "";
-        try {
-            Properties props = new Properties();
-            InputStream input = TaskDAO.class.getClassLoader().getResourceAsStream("db.properties");
-
-            props.load(input);
-
-            String driver = props.getProperty("driver");
-            url = props.getProperty("url");
-
-            Class.forName(driver);
-        } catch (ClassNotFoundException | IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            String TABLE_TASK_DEFINITION = "CREATE TABLE TASK(ID integer PRIMARY KEY, TITLE text, DESCRIPTION text, STATUS integer, DATE text)";
-            conn = DriverManager.getConnection(url);
-            Statement stmt = conn.createStatement();
-            stmt.execute(TABLE_TASK_DEFINITION);
-
-        } catch (SQLException e) {
-            throw new SQLException(e.getMessage());
-        }
+    SQLiteTaskDAO(Connection conn){
+        this.conn = conn;
     }
 
+    void createDatabase() throws SQLException {
+        String TABLE_TASK_DEFINITION = "CREATE TABLE TASKS(ID integer PRIMARY KEY, TITLE text, DESCRIPTION text, STATUS integer, DATE text)";
+
+        Statement stmt = conn.createStatement();
+        stmt.execute(TABLE_TASK_DEFINITION);
+    }
+
+    @Override
     public void save(Task task) throws SQLException{
         try {
-            String sqlInsert = "INSERT INTO TASK(TITLE, DESCRIPTION, STATUS, DATE) VALUES(?, ?, ?, ?)";
+            String sqlInsert = "INSERT INTO TASKS(TITLE, DESCRIPTION, STATUS, DATE) VALUES(?, ?, ?, ?)";
             PreparedStatement pstmt =
                     conn.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, task.getTitle());
@@ -73,10 +54,11 @@ public class TaskDAO {
         }
     }
 
+    @Override
     public Task fetchByID(int ID) throws SQLException, ParseException {
         Task task = null;
         try {
-            String sqlQuery = "SELECT ID, TITLE, DESCRIPTION, STATUS, DATE FROM TASK WHERE ID = ?";
+            String sqlQuery = "SELECT ID, TITLE, DESCRIPTION, STATUS, DATE FROM TASKS WHERE ID = ?";
 
             PreparedStatement pstmt = conn.prepareStatement(sqlQuery);
             pstmt.setInt(1, ID);
@@ -100,9 +82,10 @@ public class TaskDAO {
         return task;
     }
 
+    @Override
     public void update(Task task) throws SQLException {
         try {
-            String sqlUpdate = "UPDATE TASK SET TITLE = ?, DESCRIPTION = ?, STATUS = ?, DATE = ? WHERE ID = ?";
+            String sqlUpdate = "UPDATE TASKS SET TITLE = ?, DESCRIPTION = ?, STATUS = ?, DATE = ? WHERE ID = ?";
             PreparedStatement pstmt = conn.prepareStatement(sqlUpdate);
             pstmt.setString(1, task.getTitle());
             pstmt.setString(2, task.getDescription());
@@ -116,9 +99,10 @@ public class TaskDAO {
         }
     }
 
+    @Override
     public void remove(Task task) throws SQLException{
         try {
-            String sqlDelete = "DELETE FROM TASK WHERE ID = ?";
+            String sqlDelete = "DELETE FROM TASKS WHERE ID = ?";
             PreparedStatement pstmt = conn.prepareStatement(sqlDelete);
             pstmt.setInt(1, task.getId());
             pstmt.executeUpdate();
@@ -128,6 +112,7 @@ public class TaskDAO {
         }
     }
 
+    @Override
     public List<Task> filter(String query, int status) throws SQLException, ParseException {
         List<Task> list = new ArrayList<>();
 
@@ -137,7 +122,7 @@ public class TaskDAO {
             PreparedStatement pstmt = null;
 
             if(query.length() > 0 && status >= 0){
-                sqlQuery = "SELECT ID, TITLE, DESCRIPTION, STATUS, DATE FROM TASK WHERE (instr(TITLE, ?) > 0 OR instr(DESCRIPTION, ?) > 0) AND STATUS = ?";
+                sqlQuery = "SELECT ID, TITLE, DESCRIPTION, STATUS, DATE FROM TASKS WHERE (instr(TITLE, ?) > 0 OR instr(DESCRIPTION, ?) > 0) AND STATUS = ?";
 
                 pstmt = conn.prepareStatement(sqlQuery);
                 pstmt.setString(1, query);
@@ -147,7 +132,7 @@ public class TaskDAO {
             }
 
             if(query.length() > 0 && status < 0){
-                sqlQuery = "SELECT ID, TITLE, DESCRIPTION, STATUS, DATE FROM TASK WHERE instr(TITLE, ?) > 0 OR instr(DESCRIPTION, ?) > 0";
+                sqlQuery = "SELECT ID, TITLE, DESCRIPTION, STATUS, DATE FROM TASKS WHERE instr(TITLE, ?) > 0 OR instr(DESCRIPTION, ?) > 0";
                 pstmt = conn.prepareStatement(sqlQuery);
                 pstmt.setString(1, query);
                 pstmt.setString(2, query);
@@ -155,14 +140,14 @@ public class TaskDAO {
             }
 
             if(query.length() == 0 && status >= 0){
-                sqlQuery = "SELECT ID, TITLE, DESCRIPTION, STATUS, DATE FROM TASK WHERE STATUS = ?";
+                sqlQuery = "SELECT ID, TITLE, DESCRIPTION, STATUS, DATE FROM TASKS WHERE STATUS = ?";
                 pstmt = conn.prepareStatement(sqlQuery);
                 pstmt.setInt(1, status);
                 rs  = pstmt.executeQuery();
             }
 
             if(query.length() == 0 && status < 0){
-                sqlQuery = "SELECT ID, TITLE, DESCRIPTION, STATUS, DATE FROM TASK";
+                sqlQuery = "SELECT ID, TITLE, DESCRIPTION, STATUS, DATE FROM TASKS";
                 Statement stmt = conn.createStatement();
                 rs  = stmt.executeQuery(sqlQuery);
             }

@@ -1,16 +1,16 @@
+import br.com.kdev.task.ITaskDAO;
 import br.com.kdev.task.TaskController;
 import br.com.kdev.task.TaskConverter;
-import br.com.kdev.task.TaskDAO;
 
 import java.sql.SQLException;
 
 import static spark.Spark.*;
 
+import br.com.kdev.task.TaskDAOFactory;
 import org.apache.log4j.Logger;
 
 class App {
-
-    static Logger log = Logger.getLogger(App.class.getName());
+    private static Logger log = Logger.getLogger(App.class.getName());
 
     private static void enableCORS(final String origin, final String methods, final String headers) {
 
@@ -38,14 +38,14 @@ class App {
         });
     }
 
-    private TaskDAO configDataBase(){
-        TaskDAO taskDAO = null;
+    private ITaskDAO configDataBase(){
+        ITaskDAO taskDAO = null;
         try {
-            taskDAO = new TaskDAO();
-            taskDAO.createDatabase();
+            TaskDAOFactory taskDAOFactory = new TaskDAOFactory();
+            taskDAO = taskDAOFactory.getDataBase();
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            log.debug(e.getMessage());
         }
 
         return taskDAO;
@@ -69,9 +69,9 @@ class App {
         });
     }
 
-    void start(){
+    private void start(){
         TaskConverter taskConverter = new TaskConverter();
-        TaskDAO taskDAO = configDataBase();
+        ITaskDAO taskDAO = configDataBase();
         TaskController taskController = new TaskController(taskConverter, taskDAO);
         configRouters(taskController);
 

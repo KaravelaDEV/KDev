@@ -18,9 +18,9 @@ public class TaskController {
     private static final int HTTP_OK_REQUEST = 200;
 
     private TaskConverter taskConverter;
-    private TaskDAO taskDAO;
+    private ITaskDAO taskDAO;
 
-    public TaskController(TaskConverter taskConverter, TaskDAO taskDAO){
+    public TaskController(TaskConverter taskConverter, ITaskDAO taskDAO){
         this.taskConverter = taskConverter;
         this.taskDAO = taskDAO;
     }

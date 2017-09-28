@@ -2,17 +2,18 @@ package br.com.kdev.task;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 import java.util.Date;
 import java.util.List;
 
-public class TaskDAOTest {
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+public abstract class TaskDAOTest {
+    ITaskDAO taskDAO = null;
+
     @Test
     public void createTask() throws Exception {
-        TaskDAO taskDAO= new TaskDAO();
-        taskDAO.createDatabase();
-
         Task task = new Task();
         task.setTitle("Create Course");
         task.setDescription("GCP");
@@ -26,9 +27,6 @@ public class TaskDAOTest {
 
     @Test
     public void fetchTaskByID() throws Exception {
-        TaskDAO taskDAO = new TaskDAO();
-        taskDAO.createDatabase();
-
         Task task = new Task();
         task.setTitle("Create Course");
         taskDAO.save(task);
@@ -55,9 +53,6 @@ public class TaskDAOTest {
 
     @Test
     public void updateTask() throws Exception {
-        TaskDAO taskDAO = new TaskDAO();
-        taskDAO.createDatabase();
-
         Task task = new Task();
         task.setTitle("Create Course A");
         task.setDate(new Date());
@@ -93,9 +88,6 @@ public class TaskDAOTest {
 
     @Test
     public void removeTask() throws Exception {
-        TaskDAO taskDAO = new TaskDAO();
-        taskDAO.createDatabase();
-
         Task task = new Task();
         task.setTitle("Create Course");
         taskDAO.save(task);
@@ -110,9 +102,6 @@ public class TaskDAOTest {
 
     @Test
     public void listTasks() throws Exception {
-        TaskDAO taskDAO= new TaskDAO();
-        taskDAO.createDatabase();
-
         Task task = new Task();
         task.setTitle("Create Course A");
         task.setDate(new Date());
@@ -132,9 +121,6 @@ public class TaskDAOTest {
 
     @Test
     public void filter() throws Exception {
-        TaskDAO taskDAO = new TaskDAO();
-        taskDAO.createDatabase();
-
         Task task = new Task();
         task.setTitle("Create Course AAA");
         task.setDescription("Course of some letters A");

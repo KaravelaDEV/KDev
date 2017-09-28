@@ -3,7 +3,7 @@ package br.com.kdev.task;
 import java.util.Date;
 
 class Task {
-    private int id;
+    private int id = 0;
     private String title;
     private String description;
     private int status;

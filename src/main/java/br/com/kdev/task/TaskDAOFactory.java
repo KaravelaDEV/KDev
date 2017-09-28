@@ -1,52 +1,45 @@
 package br.com.kdev.task;
 
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import br.com.kdev.util.DAOUtil;
+
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class TaskDAOFactory {
+    private DAOUtil daoUtil = null;
 
-    private Connection conn;
+    public TaskDAOFactory(){
+        this.daoUtil = new DAOUtil();
+    }
+
+    public TaskDAOFactory(DAOUtil daoUtil){
+        this.daoUtil = daoUtil;
+    }
 
     public ITaskDAO getDataBase() throws Exception {
         ITaskDAO taskDAO = null;
 
-        Properties props = new Properties();
-        InputStream input = TaskDAOFactory.class.getClassLoader().getResourceAsStream("db.properties");
-        props.load(input);
-
-        String serverName = props.getProperty("servername");
+        String serverName = daoUtil.getServerName();
 
         if(serverName.toLowerCase().equals("sqlite")) {
-            taskDAO = createSQLiteTaskDAO(
-                    props.getProperty("driver"),
-                    props.getProperty("url"));
+            taskDAO = createSQLiteTaskDAO();
         }
 
         if(serverName.toLowerCase().equals("mysql")){
-            taskDAO = createMySQLTaskDAO(
-                    props.getProperty("driver"),
-                    props.getProperty("url"),
-                    props.getProperty("username"),
-                    props.getProperty("password"));
+            taskDAO = createMySQLTaskDAO();
         }
 
         return taskDAO;
     }
 
-    public SQLiteTaskDAO createSQLiteTaskDAO(String driver, String url) throws SQLException, ClassNotFoundException {
-        Class.forName(driver);
-        conn = DriverManager.getConnection(url);
-        SQLiteTaskDAO sqliteTaskDAO = new SQLiteTaskDAO(conn);
+    public SQLiteTaskDAO createSQLiteTaskDAO() throws SQLException, ClassNotFoundException, IOException {
+        SQLiteTaskDAO sqliteTaskDAO = new SQLiteTaskDAO(daoUtil.connectToSQLite());
         sqliteTaskDAO.createDatabase();
+
         return sqliteTaskDAO;
     }
 
-    public MySQLTaskDAO createMySQLTaskDAO(String driver, String url, String username, String password) throws SQLException, ClassNotFoundException {
-        Class.forName(driver);
-        conn = DriverManager.getConnection(url, username, password);
-        return new MySQLTaskDAO(conn);
+    public MySQLTaskDAO createMySQLTaskDAO() throws SQLException, ClassNotFoundException, IOException {
+        return new MySQLTaskDAO(daoUtil.connectToMysql());
     }
 }

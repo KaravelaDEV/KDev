@@ -5,12 +5,10 @@ import org.junit.Test;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public abstract class TaskDAOTest {
-    ITaskDAO taskDAO = null;
+    static ITaskDAO taskDAO = null;
 
     @Test
     public void createTask() throws Exception {
@@ -19,9 +17,12 @@ public abstract class TaskDAOTest {
         task.setDescription("GCP");
         task.setStatus(0);
         task.setDate(new Date());
+
+        assertEquals(0, task.getId());
+
         taskDAO.save(task);
 
-        assertEquals(1, task.getId());
+        assertTrue(task.getId() > 0);
         assertEquals("Create Course", task.getTitle());
     }
 
@@ -31,59 +32,64 @@ public abstract class TaskDAOTest {
         task.setTitle("Create Course");
         taskDAO.save(task);
 
-        task = taskDAO.fetchByID(1);
+        assertTrue(task.getId() > 0);
+        Task taskRecovered = taskDAO.fetchByID(task.getId());
 
-        assertNotNull(task);
-        assertEquals(1, task.getId());
-        assertEquals("Create Course", task.getTitle());
-        assertNull(task.getDate());
+        assertNotNull(taskRecovered);
+        assertEquals(taskRecovered.getId(), task.getId());
+        assertEquals("Create Course", taskRecovered.getTitle());
+        assertNull(taskRecovered.getDate());
 
         task = new Task();
         task.setTitle("Create Course");
         task.setDate(new Date());
         taskDAO.save(task);
 
-        task = taskDAO.fetchByID(2);
+        assertTrue(task.getId() > 0);
 
-        assertNotNull(task);
-        assertEquals(2, task.getId());
-        assertEquals("Create Course", task.getTitle());
-        assertNotNull(task.getDate());
+        taskRecovered = taskDAO.fetchByID(task.getId());
+
+        assertNotNull(taskRecovered);
+        assertEquals(taskRecovered.getId(), task.getId());
+        assertEquals("Create Course", taskRecovered.getTitle());
+        assertNotNull(taskRecovered.getDate());
     }
 
     @Test
     public void updateTask() throws Exception {
-        Task task = new Task();
-        task.setTitle("Create Course A");
-        task.setDate(new Date());
-        taskDAO.save(task);
+        Task taskCourseA = new Task();
+        taskCourseA.setTitle("Create Course A");
+        taskCourseA.setDate(new Date());
+        taskDAO.save(taskCourseA);
 
-        task = new Task();
-        task.setTitle("Create Course B");
-        task.setDate(new Date());
-        taskDAO.save(task);
+        Task taskCourseB = new Task();
+        taskCourseB.setTitle("Create Course B");
+        taskCourseB.setDate(new Date());
+        taskDAO.save(taskCourseB);
 
-        task = taskDAO.fetchByID(1);
-        assertEquals(1, task.getId());
-        assertEquals("Create Course A", task.getTitle());
-        assertNotNull(task.getDate());
+        assertTrue(taskCourseA.getId() > 0);
 
-        task = taskDAO.fetchByID(2);
-        assertEquals(2, task.getId());
-        assertEquals("Create Course B", task.getTitle());
-        assertNotNull(task.getDate());
+        Task taskRecovered = taskDAO.fetchByID(taskCourseA.getId());
+        assertEquals(taskRecovered.getId(), taskCourseA.getId());
+        assertEquals("Create Course A", taskRecovered.getTitle());
+        assertNotNull(taskRecovered.getDate());
 
-        task = taskDAO.fetchByID(1);
-        task.setTitle("Course A Updated");
-        taskDAO.update(task);
+        taskRecovered = taskDAO.fetchByID(taskCourseB.getId());
+        assertEquals(taskRecovered.getId(), taskCourseB.getId());
+        assertEquals("Create Course B", taskRecovered.getTitle());
+        assertNotNull(taskRecovered.getDate());
 
-        task = taskDAO.fetchByID(1);
-        assertEquals(1, task.getId());
-        assertEquals("Course A Updated", task.getTitle());
+        Task taskUpdated = taskDAO.fetchByID(taskCourseA.getId());
+        taskUpdated.setTitle("Course A Updated");
+        taskDAO.update(taskUpdated);
 
-        task = taskDAO.fetchByID(2);
-        assertEquals(2, task.getId());
-        assertEquals("Create Course B", task.getTitle());
+        taskRecovered = taskDAO.fetchByID(taskCourseA.getId());
+        assertEquals(taskRecovered.getId(), taskCourseA.getId());
+        assertEquals("Course A Updated", taskRecovered.getTitle());
+
+        taskRecovered = taskDAO.fetchByID(taskCourseB.getId());
+        assertEquals(taskRecovered.getId(), taskCourseB.getId());
+        assertEquals("Create Course B", taskRecovered.getTitle());
     }
 
     @Test
@@ -92,12 +98,12 @@ public abstract class TaskDAOTest {
         task.setTitle("Create Course");
         taskDAO.save(task);
 
-        task = taskDAO.fetchByID(1);
-        assertEquals(1, task.getId());
+        Task taskRecovered = taskDAO.fetchByID(task.getId());
+        assertEquals(taskRecovered.getId(), task.getId());
 
-        taskDAO.remove(task);
-        task = taskDAO.fetchByID(1);
-        assertNull(task);
+        taskDAO.remove(taskRecovered);
+        taskRecovered = taskDAO.fetchByID(task.getId());
+        assertNull(taskRecovered);
     }
 
     @Test
